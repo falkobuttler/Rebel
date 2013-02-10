@@ -241,6 +241,8 @@
 		
 		self.transientEventMonitor = [NSEvent addLocalMonitorForEventsMatchingMask:(NSLeftMouseDownMask | NSRightMouseDownMask | NSKeyUpMask) handler: ^(NSEvent *event) {
 			if (self.popoverWindow == nil) return event;
+  
+      if ( self.popoverWindow.attachedSheet ) return event;
 			
 			static NSUInteger escapeKey = 53;
 			BOOL shouldClose = NO;
